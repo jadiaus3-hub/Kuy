@@ -160,6 +160,7 @@ export default function RecordFormModal({ isOpen, onClose, record, title }: Reco
                       placeholder="Enter description (optional)" 
                       rows={3}
                       {...field}
+                      value={field.value || ""}
                     />
                   </FormControl>
                   <FormMessage />

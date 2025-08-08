@@ -31,7 +31,7 @@ export class MemStorage implements IStorage {
 
   async getUserByUsername(username: string): Promise<Record | undefined> {
     return Array.from(this.users.values()).find(
-      (user) => user.username === username,
+      (user) => (user as any).username === username,
     );
   }
 
@@ -58,6 +58,9 @@ export class MemStorage implements IStorage {
     const record: Record = {
       ...insertRecord,
       id,
+      status: insertRecord.status || "active",
+      priority: insertRecord.priority || "medium",
+      description: insertRecord.description || null,
       createdAt: now,
       updatedAt: now,
     };
